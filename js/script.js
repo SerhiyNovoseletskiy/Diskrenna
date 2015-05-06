@@ -58,7 +58,7 @@ function only(e) {
     var cols = $('#row_1 td');
     var rows = $('table tr');
 
-    for (i = 1; i < rows.length; i++) {
+    for (var i = 1; i < rows.length; i++) {
         $("#col_" + i + ' button').html(e);
     }
 }
@@ -135,6 +135,32 @@ function dovuznachenna_funkcii() {
         $('#dovuznachenna_funkcii ul').append('<li class="collection-item">'+temp+'</li>');
     }
 }
+
+// Мінімізація функції
+function minimization() {
+    var f = $('#dovuznachenna_funkcii ul li:first-child').html();
+    var temp;
+
+    var rows = $('table tr');
+    $("#col_1" ).html(f);
+    for (var i = 2; i < rows.length; i++) {
+        temp = '';
+        if (f.length >= 2) {
+            if (f[0] == f[1])
+                temp += '0';
+            else
+                temp += '1';
+
+            for (var j = 2; j < f.length; j++) {
+                temp += f[j];
+            }
+        }
+
+        f = temp;
+        $("#col_" + i ).html(temp);
+    }
+}
+
 
 function count_of_f(str) {
     var result = 0;
