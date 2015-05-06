@@ -59,7 +59,7 @@ function only(e) {
     var rows = $('table tr');
 
     for (var i = 1; i < rows.length; i++) {
-        $("#col_" + i + ' button').html(e);
+        $("#col_" + i).html('<button class="btn" onclick="change_button_f(this)">'+e+'</button>');
     }
 }
 
