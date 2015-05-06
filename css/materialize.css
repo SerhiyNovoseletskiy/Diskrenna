@@ -1,8 +1,12 @@
-/*!
- * Materialize v0.96.1 (http://materializecss.com)
- * Copyright 2014-2015 Materialize
- * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
- */
+.container {
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%; 
+  margin-top: 20px;
+  }
+
+
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important; }
 
