@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Дослідження повноти систем булевих функцій</title>
+    <link rel="stylesheet" href="css/materialize.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="number_of_vars" onchange="draw_table()" type="number" value="2" min = "1" max = "10">
+                    <label>Кiлькiсть змiнних:</label>
+                </div>
+
+                <div class="col s12">
+                    <table class="bordered" id = "table" align="center">
+                        <thead>
+                            <tr>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s6">
+            <div class="row">
+                <div class="col s4">
+                    <button class="btn" onclick="only('0')">Всюди 0</button>
+                </div>
+
+                <div class="col s4">
+                    <button class="btn" onclick="only('1')">Всюди 1</button>
+                </div>
+
+                <div class="col s4">
+                    <button class="btn" onclick="only('?')">Всюди ?</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <button class="btn" onclick="dovuznachenna_funkcii()">Довизначення функції</button>
+                </div>
+
+                <div class="col s6">
+                    <button class="btn">Мінімізація функції</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
