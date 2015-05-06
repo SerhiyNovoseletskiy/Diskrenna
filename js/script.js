@@ -91,15 +91,49 @@ function dovuznachenna_funkcii() {
     if (count == 1)
         count = 0;
 
-    $("#min_collection").css({'display': 'block'});
-    $('#min_collection ul').html('');
-	
-	var temp = '';
-	var arr = new Array();
-	for (var i = 0; i < f.length; i++) {
-		if (f[i] == '?')
-			temp += '?'
-	}
+    var indexes = new Array();
+    for (var i = 0; i < f.length; i++) {
+        if (f[i] == '?')
+            indexes.push(i);
+    }
+
+    var indexes_length = indexes.length;
+    var index;
+    var result = new Array();
+    var row;
+
+    for (var i = 0; i < count; i++) {
+        row = new Array();
+        for (var j = 0; j < indexes_length; j++) {
+            row.push(GenerateDN(i, indexes_length).charAt(j));
+        }
+        result.push(row);
+    }
+
+    var temp = '';
+
+    $('#dovuznachenna_funkcii').css({
+        'display': 'block'
+    });
+
+    $('#dovuznachenna_funkcii ul').html('');
+
+    for (var i = 0; i < count; i++) {
+        row = result[i];
+        temp = '';
+        index = null;
+
+        for (var j = 0; j < f.length; j++) {
+
+            if (indexes.indexOf(j) == -1)
+                temp += f[j];
+            else {
+                temp += row[indexes.indexOf(j)];
+            }
+        }
+
+        $('#dovuznachenna_funkcii ul').append('<li class="collection-item">'+temp+'</li>');
+    }
 }
 
 function count_of_f(str) {
@@ -111,16 +145,6 @@ function count_of_f(str) {
     return result;
 }
 
-function get_indexes(str) {
-    var arr = new Array();
-    for (var i = 0; i < str.length; i++) {
-        if (str[i] == '?') {
-            arr.push(i);
-        }
-    }
-
-    return arr;
-}
 
 
 ////// Генерування двійкового набору заданої розмірності за його десятковим еквівалентом
