@@ -59,7 +59,7 @@ function only(e) {
     var rows = $('table tr');
 
     for (var i = 1; i < rows.length; i++) {
-        $("#col_" + i).html('<button class="btn" onclick="change_button_f(this)">'+e+'</button>');
+        $("#col_" + i).html('<button class="btn" onclick="change_button_f(this)">' + e + '</button>');
     }
 }
 
@@ -132,33 +132,75 @@ function dovuznachenna_funkcii() {
             }
         }
 
-        $('#dovuznachenna_funkcii ul').append('<li class="collection-item">'+temp+'</li>');
+        $('#dovuznachenna_funkcii ul').append('<li class="collection-item">' + temp + '</li>');
     }
 }
 
 // Мінімізація функції
 function minimization() {
-    var f = $('#dovuznachenna_funkcii ul li:first-child').html();
-    var temp;
 
-    var rows = $('table tr');
-    $("#col_1" ).html(f);
-    for (var i = 2; i < rows.length; i++) {
-        temp = '';
-        if (f.length >= 2) {
-            if (f[0] == f[1])
-                temp += '0';
-            else
-                temp += '1';
+    function minimize(f) {
+        var temp;
+        var cols = parseInt($('#number_of_vars').val());
+        var rows = $('table tr');
+        var arr;
+        var tmp = 'a';
+        var k = 0;
+        var a = new Array();
 
-            for (var j = 2; j < f.length; j++) {
-                temp += f[j];
+        for (var i = 0; i < rows.length; i++) {
+            console.log(f);
+            temp = '';
+            k = 0;
+            tmp = 'a';
+
+            arr = {
+                'indexes': new Array(),
+                'value': f[0]
+            };
+
+            for (var j = 1; j <= cols; j++) {
+                if ($('#col_' + i + '_' + j).html() == '1') {
+                    k++;
+                    arr.indexes.push(j);
+                }
             }
+
+            if (k == 0)
+                arr.indexes = ['0'];
+
+            if (f.length >= 2)
+                for (var j = 0; j < f.length; j++) {
+                    if (j + 1 < f.length) {
+                        if (f[j] == f[j + 1])
+                            temp += '0';
+                        else
+                            temp += '1';
+                    }
+                }
+
+            f = temp;
+            a.push(arr);
         }
 
-        f = temp;
-        $("#col_" + i ).html(temp);
+        console.log('Відображаю А');
+
+        for (var i = 1; i < a.length; i++) {
+            tmp = 'a';
+            for (j = 0; j < a[i].indexes.length; j++) {
+                tmp += a[i].indexes[j];
+            }
+
+            tmp += ' = ' + a[i-1].value;
+            console.log(tmp);
+        }
     }
+
+    var f = $('#dovuznachenna_funkcii ul li').each(function () {
+        console.log("For Function : " + $(this).html());
+        minimize($(this).html());
+    });
+
 }
 
 
@@ -170,7 +212,6 @@ function count_of_f(str) {
     }
     return result;
 }
-
 
 
 ////// Генерування двійкового набору заданої розмірності за його десятковим еквівалентом
