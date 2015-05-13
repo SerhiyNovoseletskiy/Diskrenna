@@ -32,10 +32,10 @@
         </div>
 
         <div class="col s12 m6">
-            <div class="row z-depth-1" style = "padding: 7px;">
-				<div class = "col s12">
-				<b>Швидкий набір</b>
-				</div>
+            <div class="row z-depth-1" style="padding: 7px;">
+                <div class="col s12">
+                    <b>Швидкий набір</b>
+                </div>
                 <div class="col s4">
                     <button class="btn" onclick="only('0')">Всюди 0</button>
                 </div>
@@ -55,7 +55,12 @@
                 </div>
 
                 <div class="col s6">
-                    <button class="btn" onclick="minimization();">Мінімізація функції</button>
+
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li><a href="#!" onclick="minimization()">По кількості доданків</a></li>
+                    </ul>
+                    <a class="btn dropdown-button" href="#!" data-activates="dropdown2">Мінімізація фукнкції<i
+                            class="mdi-navigation-arrow-drop-down right"></i></a>
                 </div>
             </div>
 
