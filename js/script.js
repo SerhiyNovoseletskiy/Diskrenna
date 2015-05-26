@@ -141,9 +141,11 @@ function dovuznachenna_funkcii() {
     }
 }
 
+
 // Мінімізація функції за кілкістю доданків
-function minimization() {
+function count_of_dodankiv() {
     var list_of_struct = new Array();
+    $('#log').html('');
 
     function minimize(f) {
         var temp;
@@ -161,7 +163,7 @@ function minimization() {
 
 
         for (var i = 0; i < rows.length; i++) {
-            console.log(f);
+            $('#log').append(f + '\n');
             temp = '';
             k = 0;
             tmp = 'a';
@@ -195,7 +197,7 @@ function minimization() {
             a.push(arr);
         }
 
-        console.log('Відображаю А');
+        $('#log').append('Відображаю А\n');
         for (var i = 1; i < a.length; i++) {
             tmp = 'a';
             for (j = 0; j < a[i].indexes.length; j++) {
@@ -215,7 +217,7 @@ function minimization() {
             }
 
             tmp += ' = ' + a[i - 1].value;
-            console.log(tmp);
+            $('#log').append(tmp + '\n');
 
             if (a[i - 1].value == 1) {
                 struct.length++;
@@ -223,13 +225,13 @@ function minimization() {
             }
         }
 
-        console.log('Мінімізована функція: ' + struct.value);
-        console.log('Кількість доданків :' + struct.length);
+        $('#log').append('Мінімізована функція: ' + struct.value.substr(0, value.lastIndexOf('&theta;'))+'\n');
+        $('#log').append('Кількість доданків :' + struct.length+'\n\n\n');
         list_of_struct.push(struct)
     }
 
     var f = $('#dovuznachenna_funkcii ul li').each(function () {
-        console.log("For Function : " + $(this).html());
+        $('#log').append("For Function : " + $(this).html()+'\n');
         minimize($(this).html());
     });
 
@@ -244,7 +246,13 @@ function minimization() {
     }
 
     value = value.substr(0, value.lastIndexOf('&theta;'));
-    Materialize.toast(value);
+    $('#log').append(value + '\n');
+}
+
+function minimization() {
+    if ($('#dodanki_selected').prop('checked')) {
+        count_of_dodankiv();
+    }
 }
 
 
