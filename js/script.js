@@ -68,7 +68,6 @@ function only(e) {
     }
 }
 
-
 function change_button_f(e) {
     switch ($(e).html()) {
         case '0':
@@ -141,117 +140,302 @@ function dovuznachenna_funkcii() {
     }
 }
 
+// Мінімізація функції
+function minimization() {
+    var temp = '';
+    var k = 0;
+    var tmp = 'a';
+    var arr_l, arr_r; // Ліва і права частина трикутника
+    var cols = parseInt($('#number_of_vars').val()); // Кількість стовпців в таблиці
+    var our_function = ''; // Наша функція
+    var new_function = ''; // Нова функція
+    var rows = $('table tr').length; // Кількість рядків в таблиці
+    var list_l = {'code': null, 'array': new Array()};
+    var list_r = {'code': null, 'array': new Array()};
+    var table;
+    var struct;
+    var p;
+    var minimize_function;
+    var minimize_function_list = new Array();
 
-// Мінімізація функції за кілкістю доданків
-function count_of_dodankiv() {
-    var list_of_struct = new Array();
+    // Очищую результат якщо він уже був виведений
     $('#log').html('');
 
-    function minimize(f) {
-        var temp;
-        var cols = parseInt($('#number_of_vars').val());
-        var rows = $('table tr');
-        var arr;
-        var tmp = 'a';
-        var k = 0;
-        var a = new Array();
+    // Роблю довизначення функції
+    dovuznachenna_funkcii();
 
-        var struct = {
-            'length': 0,
-            'value': ''
-        };
+    // Якщо в нас немає довизначених функцій то беремо з таблиці
+    if ($('#dovuznachenna_funkcii ul li').length == 0) {
+        for (var i = 1; i < rows; i++) {
+            our_function += $("#col_" + i + ' button').html();
+        }
 
+        $('#log').append('<p>Функція : ' + our_function + '</p>');
 
-        for (var i = 0; i < rows.length; i++) {
-            $('#log').append(f + '\n');
+        // Будую таблицю
+        table = new Array();
+        for (var i = 1; i < rows; i++) {
+
+            temp = '';
+            struct = {
+                'lines': null,
+                'value': null
+            };
+
+            for (var j = 1; j <= cols; j++)
+                temp += $('#col_' + i + '_' + j).html();
+
+            struct.lines = temp;
+            struct.value = our_function[i - 1];
+            table.push(struct);
+        }
+
+        // Будую трикутник
+        console.log('Будую трикутник для функції: ' + our_function);
+
+        list_l.code = table[0].lines;
+        list_r.code = table[table.length - 1].lines;
+
+        for (var i = 1; i < rows; i++) {
+            console.log(our_function);
             temp = '';
             k = 0;
             tmp = 'a';
 
-            arr = {
+            arr_l = {
                 'indexes': new Array(),
-                'value': f[0]
+                'value': our_function[0]
+            };
+
+            arr_r = {
+                'indexes': new Array(),
+                'value': our_function[our_function.length - 1]
             };
 
             for (var j = 1; j <= cols; j++) {
                 if ($('#col_' + i + '_' + j).html() == '1') {
                     k++;
-                    arr.indexes.push(j);
+                    arr_l.indexes.push(j);
+                    arr_r.indexes.push(j);
                 }
             }
 
-            if (k == 0)
-                arr.indexes = ['0'];
+            if (k == 0) {
+                arr_l.indexes = ['0'];
+                arr_r.indexes = ['0'];
+            }
 
-            if (f.length >= 2)
-                for (var j = 0; j < f.length; j++) {
-                    if (j + 1 < f.length) {
-                        if (f[j] == f[j + 1])
+
+            if (our_function.length >= 2)
+                for (var j = 0; j < our_function.length; j++) {
+                    if (j + 1 < our_function.length) {
+                        if (our_function[j] == our_function[j + 1])
                             temp += '0';
                         else
                             temp += '1';
                     }
                 }
 
-            f = temp;
-            a.push(arr);
+            our_function = temp;
+
+            list_l.array.push(arr_l);
+            list_r.array.push(arr_r);
         }
 
-        $('#log').append('Відображаю А\n');
-        for (var i = 1; i < a.length; i++) {
+        // Виводжу A (наприклад P(0,0,0))
+        console.log("P(" + list_l.code + ")");
+        minimize_function = '';
+        for (var i = 0; i < list_l.array.length; i++) {
             tmp = 'a';
-            for (j = 0; j < a[i].indexes.length; j++) {
-                tmp += a[i].indexes[j] + ' ';
+            for (j = 0; j < list_l.array[i].indexes.length; j++) {
+                tmp += list_l.array[i].indexes[j] + ' ';
 
-                if (a[i-1].value == 1)
-                    if (a[i].indexes.length == 1 && a[i].indexes[0] == 0) {
-                        struct.value += '0';
+                if (list_l.array[i].value == 1)
+                    if (list_l.array[i].indexes.length == 1 && list_l.array[i].indexes[0] == 0) {
+                        minimize_function += '0'
                     } else {
-                        if (j == 0) {
-                            struct.value += 'X';
-                            struct.value += a[i].indexes[j]
-                        } else {
-                            struct.value += a[i].indexes[j]
-                        }
+                        minimize_function += 'X';
+                        minimize_function += list_l.array[i].indexes[j]
                     }
             }
 
-            tmp += ' = ' + a[i - 1].value;
-            $('#log').append(tmp + '\n');
-
-            if (a[i - 1].value == 1) {
-                struct.length++;
-                struct.value += '&theta;';
+            if (list_l.array[i].value == 1) {
+                minimize_function += ' &theta; ';
             }
+
+            console.log(tmp + ' = ' + list_l.array[i].value);
         }
+        minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
+        $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
+        minimize_function_list.push({'position': 'l', 'function': minimize_function});
 
-        $('#log').append('Мінімізована функція: ' + struct.value.substr(0, value.lastIndexOf('&theta;'))+'\n');
-        $('#log').append('Кількість доданків :' + struct.length+'\n\n\n');
-        list_of_struct.push(struct)
-    }
+        // Виводжу A (наприклад P(1,1,1))
+        console.log("P(" + list_r.code + ")");
+        minimize_function = '';
+        for (var i = 0; i < list_r.array.length; i++) {
+            tmp = 'a';
+            for (j = 0; j < list_r.array[i].indexes.length; j++) {
+                tmp += list_r.array[i].indexes[j] + ' ';
 
-    var f = $('#dovuznachenna_funkcii ul li').each(function () {
-        $('#log').append("For Function : " + $(this).html()+'\n');
-        minimize($(this).html());
-    });
+                if (list_r.array[i].value == 1)
+                    if (list_r.array[i].indexes.length == 1 && list_r.array[i].indexes[0] == 0) {
+                        minimize_function += '0'
+                    } else {
+                        minimize_function += 'X';
+                        minimize_function += list_r.array[i].indexes[j]
+                    }
+            }
 
-    var min = list_of_struct[0].length;
-    var value = list_of_struct[0].value;
+            if (list_r.array[i].value == 1) {
+                minimize_function += ' &theta; ';
+            }
 
-    for (var i = 1; i < list_of_struct.length; i++) {
-        if (min > list_of_struct[i].length) {
-            min = list_of_struct[i].length;
-            value = list_of_struct[i].value;
+            console.log(tmp + ' = ' + list_r.array[i].value);
         }
-    }
+        minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
+        $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
+        minimize_function_list.push({'position': 'r', 'function': minimize_function});
 
-    value = value.substr(0, value.lastIndexOf('&theta;'));
-    $('#log').append(value + '\n');
-}
+        var p;
+        var indexes;
 
-function minimization() {
-    if ($('#dodanki_selected').prop('checked')) {
-        count_of_dodankiv();
+        for (var i = 2; i <= (rows - 1) / 2; i++) {
+            new_function = '';
+            p = table[i - 1].lines;
+            indexes = new Array();
+            for (var j = 0; j < p.length; j++)
+                if (p[j] == '1')
+                    indexes.push(j);
+
+            for (var n = 0; n < rows-1; n++) {
+                tmp = table[n].lines;
+                temp = '';
+                for (var m = 0; m < tmp.length; m++) {
+                    if (indexes.indexOf(m) == -1) {
+                        temp += tmp[m];
+                    } else {
+                        if (tmp[m] == '1')
+                            temp += '0';
+                        else
+                            temp += '1';
+                    }
+                }
+
+                for (var m = 0; m < rows-1; m++) {
+                    if (temp == table[m].lines)
+                        new_function += table[m].value;
+                }
+
+            }
+
+            console.log('Нова функція: '+new_function);
+            console.log("Будую для неї трикутник");
+            list_l = {'code': null, 'array': new Array()};
+            list_r = {'code': null, 'array': new Array()};
+
+            list_l.code = table[i-1].lines;
+            list_r.code = table[table.length - i].lines;
+
+            for (var m = 1; m < rows; m++) {
+                console.log(new_function);
+                temp = '';
+                k = 0;
+                tmp = 'a';
+
+                arr_l = {
+                    'indexes': new Array(),
+                    'value': new_function[0]
+                };
+
+                arr_r = {
+                    'indexes': new Array(),
+                    'value': new_function[new_function.length - 1]
+                };
+
+                for (var j = 1; j <= cols; j++) {
+                    if ($('#col_' + m + '_' + j).html() == '1') {
+                        k++;
+                        arr_l.indexes.push(j);
+                        arr_r.indexes.push(j);
+                    }
+                }
+
+                if (k == 0) {
+                    arr_l.indexes = ['0'];
+                    arr_r.indexes = ['0'];
+                }
+
+
+                if (new_function.length >= 2)
+                    for (var j = 0; j < new_function.length; j++) {
+                        if (j + 1 < new_function.length) {
+                            if (new_function[j] == new_function[j + 1])
+                                temp += '0';
+                            else
+                                temp += '1';
+                        }
+                    }
+
+                new_function = temp;
+
+                list_l.array.push(arr_l);
+                list_r.array.push(arr_r);
+            }
+
+            // Виводжу A (наприклад P(0,0,0))
+            console.log("P(" + list_l.code + ")");
+            minimize_function = '';
+            for (var m = 0; m < list_l.array.length; m++) {
+                tmp = 'a';
+                for (j = 0; j < list_l.array[m].indexes.length; j++) {
+                    tmp += list_l.array[m].indexes[j] + ' ';
+
+                    if (list_l.array[m].value == 1)
+                        if (list_l.array[m].indexes.length == 1 && list_l.array[m].indexes[0] == 0) {
+                            minimize_function += '0'
+                        } else {
+                            minimize_function += 'X';
+                            minimize_function += list_l.array[m].indexes[j]
+                        }
+                }
+
+                if (list_l.array[m].value == 1) {
+                    minimize_function += ' &theta; ';
+                }
+
+                console.log(tmp + ' = ' + list_l.array[m].value);
+            }
+            minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
+            $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
+            minimize_function_list.push({'position': 'l', 'function': minimize_function});
+
+            // Виводжу A (наприклад P(1,1,1))
+            console.log("P(" + list_r.code + ")");
+            minimize_function = '';
+            for (var m = 0; m < list_r.array.length; m++) {
+                tmp = 'a';
+                for (j = 0; j < list_r.array[m].indexes.length; j++) {
+                    tmp += list_r.array[m].indexes[j] + ' ';
+
+                    if (list_r.array[m].value == 1)
+                        if (list_r.array[m].indexes.length == 1 && list_r.array[m].indexes[0] == 0) {
+                            minimize_function += '0'
+                        } else {
+                            minimize_function += 'X';
+                            minimize_function += list_r.array[m].indexes[j]
+                        }
+                }
+
+                if (list_r.array[m].value == 1) {
+                    minimize_function += ' &theta; ';
+                }
+
+                console.log(tmp + ' = ' + list_r.array[m].value);
+            }
+            minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
+            $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
+            minimize_function_list.push({'position': 'r', 'function': minimize_function});
+        }
     }
 }
 
