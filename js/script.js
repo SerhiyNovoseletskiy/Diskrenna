@@ -243,7 +243,7 @@ function minimization() {
 
                 if (list_l.array[i].value == 1)
                     if (list_l.array[i].indexes.length == 1 && list_l.array[i].indexes[0] == 0) {
-                        minimize_function += '0'
+                        minimize_function += '1';
                     } else {
                         minimize_function += 'X';
                         minimize_function += list_l.array[i].indexes[j]
@@ -270,7 +270,7 @@ function minimization() {
 
                 if (list_r.array[i].value == 1)
                     if (list_r.array[i].indexes.length == 1 && list_r.array[i].indexes[0] == 0) {
-                        minimize_function += '0'
+                        minimize_function += '1';
                     } else {
                         minimize_function += 'X';
                         minimize_function += list_r.array[i].indexes[j]
@@ -383,7 +383,7 @@ function minimization() {
 
                     if (list_l.array[m].value == 1)
                         if (list_l.array[m].indexes.length == 1 && list_l.array[m].indexes[0] == 0) {
-                            minimize_function += '0'
+                            minimize_function += '1';
                         } else {
                             minimize_function += 'X';
                             minimize_function += list_l.array[m].indexes[j]
@@ -410,7 +410,7 @@ function minimization() {
 
                     if (list_r.array[m].value == 1)
                         if (list_r.array[m].indexes.length == 1 && list_r.array[m].indexes[0] == 0) {
-                            minimize_function += '0'
+                            minimize_function += '1';
                         } else {
                             minimize_function += 'X';
                             minimize_function += list_r.array[m].indexes[j]
@@ -442,9 +442,9 @@ function minimization() {
         for (var i = 1; i < rows; i++) {
             our_function += $("#col_" + i + ' button').html();
         }
-
         minimize(our_function);
     } else {
+        // Якщо у нас є довизначені функції
         $('#dovuznachenna_funkcii ul li').each(function () {
             minimize($(this).html());
         });
