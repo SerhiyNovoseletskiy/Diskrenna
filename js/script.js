@@ -160,9 +160,7 @@ function minimization() {
 
 
     function minimize(our_function) {
-
         $('#log').append('<p>Функція : ' + our_function + '</p>');
-
         // Будую таблицю
         table = new Array();
         for (var i = 1; i < rows; i++) {
@@ -180,7 +178,6 @@ function minimization() {
             struct.value = our_function[i - 1];
             table.push(struct);
         }
-
         // Будую трикутник
         console.log('Будую трикутник для функції: ' + our_function);
 
@@ -232,7 +229,6 @@ function minimization() {
             list_l.array.push(arr_l);
             list_r.array.push(arr_r);
         }
-
         // Виводжу A (наприклад P(0,0,0))
         console.log("P(" + list_l.code + ")");
         minimize_function = '';
@@ -257,8 +253,14 @@ function minimization() {
             console.log(tmp + ' = ' + list_l.array[i].value);
         }
         minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
-        $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
-        minimize_function_list.push({'position': 'l', 'function': minimize_function});
+        console.log('Мінімізована функція : ' + minimize_function);
+        minimize_function_list.push(
+            {
+                'position': 'l',
+                'function': minimize_function,
+                'code': list_l.code
+            }
+        );
 
         // Виводжу A (наприклад P(1,1,1))
         console.log("P(" + list_r.code + ")");
@@ -284,8 +286,14 @@ function minimization() {
             console.log(tmp + ' = ' + list_r.array[i].value);
         }
         minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
-        $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
-        minimize_function_list.push({'position': 'r', 'function': minimize_function});
+        console.log('Мінімізована функція : ' + minimize_function);
+        minimize_function_list.push(
+            {
+                'position': 'r',
+                'function': minimize_function,
+                'code': list_r.code
+            }
+        );
 
         var p;
         var indexes;
@@ -397,7 +405,7 @@ function minimization() {
                 console.log(tmp + ' = ' + list_l.array[m].value);
             }
             minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
-            $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
+            console.log('Мінімізована функція : ' + minimize_function);
             minimize_function_list.push({'position': 'l', 'function': minimize_function});
 
             // Виводжу A (наприклад P(1,1,1))
@@ -424,19 +432,15 @@ function minimization() {
                 console.log(tmp + ' = ' + list_r.array[m].value);
             }
             minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
-            $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
+            console.log('Мінімізована функція : ' + minimize_function);
             minimize_function_list.push({'position': 'r', 'function': minimize_function});
         }
     }
 
-
     // Очищую результат якщо він уже був виведений
     $('#log').html('');
-
     // Роблю довизначення функції
     dovuznachenna_funkcii();
-
-
     // Якщо в нас немає довизначених функцій то беремо з таблиці
     if ($('#dovuznachenna_funkcii ul li').length == 0) {
         for (var i = 1; i < rows; i++) {
