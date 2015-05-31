@@ -158,17 +158,8 @@ function minimization() {
     var minimize_function;
     var minimize_function_list = new Array();
 
-    // Очищую результат якщо він уже був виведений
-    $('#log').html('');
 
-    // Роблю довизначення функції
-    dovuznachenna_funkcii();
-
-    // Якщо в нас немає довизначених функцій то беремо з таблиці
-    if ($('#dovuznachenna_funkcii ul li').length == 0) {
-        for (var i = 1; i < rows; i++) {
-            our_function += $("#col_" + i + ' button').html();
-        }
+    function minimize(our_function) {
 
         $('#log').append('<p>Функція : ' + our_function + '</p>');
 
@@ -307,7 +298,7 @@ function minimization() {
                 if (p[j] == '1')
                     indexes.push(j);
 
-            for (var n = 0; n < rows-1; n++) {
+            for (var n = 0; n < rows - 1; n++) {
                 tmp = table[n].lines;
                 temp = '';
                 for (var m = 0; m < tmp.length; m++) {
@@ -321,19 +312,19 @@ function minimization() {
                     }
                 }
 
-                for (var m = 0; m < rows-1; m++) {
+                for (var m = 0; m < rows - 1; m++) {
                     if (temp == table[m].lines)
                         new_function += table[m].value;
                 }
 
             }
 
-            console.log('Нова функція: '+new_function);
+            console.log('Нова функція: ' + new_function);
             console.log("Будую для неї трикутник");
             list_l = {'code': null, 'array': new Array()};
             list_r = {'code': null, 'array': new Array()};
 
-            list_l.code = table[i-1].lines;
+            list_l.code = table[i - 1].lines;
             list_r.code = table[table.length - i].lines;
 
             for (var m = 1; m < rows; m++) {
@@ -436,6 +427,27 @@ function minimization() {
             $('#log').append('<p>Мінімізована функція : ' + minimize_function + '</p>');
             minimize_function_list.push({'position': 'r', 'function': minimize_function});
         }
+    }
+
+
+    // Очищую результат якщо він уже був виведений
+    $('#log').html('');
+
+    // Роблю довизначення функції
+    dovuznachenna_funkcii();
+
+
+    // Якщо в нас немає довизначених функцій то беремо з таблиці
+    if ($('#dovuznachenna_funkcii ul li').length == 0) {
+        for (var i = 1; i < rows; i++) {
+            our_function += $("#col_" + i + ' button').html();
+        }
+
+        minimize(our_function);
+    } else {
+        $('#dovuznachenna_funkcii ul li').each(function () {
+            minimize($(this).html());
+        });
     }
 }
 
