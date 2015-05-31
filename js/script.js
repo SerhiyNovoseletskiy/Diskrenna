@@ -406,7 +406,13 @@ function minimization() {
             }
             minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
             console.log('Мінімізована функція : ' + minimize_function);
-            minimize_function_list.push({'position': 'l', 'function': minimize_function});
+            minimize_function_list.push(
+                {
+                    'position': 'l',
+                    'function': minimize_function,
+                    'code': list_l.code
+                }
+            );
 
             // Виводжу A (наприклад P(1,1,1))
             console.log("P(" + list_r.code + ")");
@@ -433,7 +439,13 @@ function minimization() {
             }
             minimize_function = minimize_function.substring(0, minimize_function.lastIndexOf('&theta;') - 1);
             console.log('Мінімізована функція : ' + minimize_function);
-            minimize_function_list.push({'position': 'r', 'function': minimize_function});
+            minimize_function_list.push(
+                {
+                    'position': 'r',
+                    'function': minimize_function,
+                    'code': list_r.code
+                }
+            );
         }
     }
 
@@ -453,6 +465,8 @@ function minimization() {
             minimize($(this).html());
         });
     }
+
+
 }
 
 
