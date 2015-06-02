@@ -497,7 +497,7 @@ function minimization() {
 
                 for (var i = 0; i < e.code.length; i++) {
                     if (e.code[i] == 1)
-                        codes.push(i+1);
+                        codes.push(i + 1);
                 }
 
                 for (var i = 1; i < list.length; i++) {
@@ -510,7 +510,6 @@ function minimization() {
                 if (e.function[0] == '1')
                     count++;
 
-                count--;
                 count--;
 
                 if (min > count)
@@ -526,6 +525,35 @@ function minimization() {
         }
 
         functions.forEach(function (e) {
+            codes = new Array();
+
+            for (var i = 0; i < e.code.length; i++) {
+                if (e.code[i] == 1)
+                    codes.push(i + 1);
+            }
+
+            temp = '';
+            tmp = e.function.split('&theta;');
+            tmp.forEach(function (e) {
+                if (e.indexOf('X') == -1) {
+                    temp += e + '&theta; ';
+                } else {
+                    list = e.split('X');
+                    list.forEach(function (e) {
+                        if (codes.indexOf(parseInt(e)) !== -1) {
+                            temp += '<img src = "x.png">' + e;
+                        } else {
+                            temp += 'X' + e;
+                        }
+                    });
+                }
+            });
+
+            if (temp.indexOf('XX') == 0)
+                temp = temp.substr(1, temp.length);
+
+            e.function = temp;
+
             if (e.count == min) {
                 $('#log').append('<p>P(' + e.code + ') F = ' + e.function + ' L(P(' + e.code + ') F) = ' + e.count + '</p>');
             }
