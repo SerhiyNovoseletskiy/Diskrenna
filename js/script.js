@@ -536,21 +536,26 @@ function minimization() {
             tmp = e.function.split('&theta;');
             tmp.forEach(function (e) {
                 if (e.indexOf('X') == -1) {
-                    temp += e + '&theta; ';
+                    temp += e;
                 } else {
+                    count = 0;
                     list = e.split('X');
                     list.forEach(function (e) {
-                        if (codes.indexOf(parseInt(e)) !== -1) {
-                            temp += '<img src = "x.png">' + e;
-                        } else {
-                            temp += 'X' + e;
-                        }
+                        if (count > 0)
+                            if (codes.indexOf(parseInt(e)) !== -1) {
+                                temp += '<img src = "x.png">' + e;
+                            } else {
+                                temp += 'X' + e;
+                            }
+
+                        count++;
                     });
                 }
+
+                temp += ' &theta; ';
             });
 
-            if (temp.indexOf('XX') == 0)
-                temp = temp.substr(1, temp.length);
+            temp = temp.substr(0, temp.lastIndexOf('&theta;'));
 
             e.function = temp;
 
