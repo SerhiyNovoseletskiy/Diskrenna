@@ -161,6 +161,7 @@ function minimization() {
 
     function minimize(our_function) {
         $('#log').append('<p>Функція : ' + our_function + '</p>');
+        minimize_function_list = new Array();
         // Будую таблицю
         table = new Array();
         for (var i = 1; i < rows; i++) {
@@ -447,6 +448,30 @@ function minimization() {
                 }
             );
         }
+
+        var min = 1000;
+        var functions = new Array();
+
+        if ($('#dodanki_selected').is(':checked')) {
+            minimize_function_list.forEach(function (e) {
+                if (min > e.function.split('&theta;').length)
+                    min = e.function.split('&theta;').length;
+
+                functions.push(
+                    {
+                        'count': e.function.split('&theta;').length,
+                        'function': e.function,
+                        'code': e.code
+                    }
+                )
+            });
+
+            functions.forEach(function (e) {
+                if (e.count == min) {
+                    $('#log').append('<p>P(' + e.code + ') F = ' + e.function + ' L(P(' + e.code + ') F) = ' + e.count + '</p>');
+                }
+            });
+        }
     }
 
     // Очищую результат якщо він уже був виведений
@@ -466,29 +491,7 @@ function minimization() {
         });
     }
 
-    var min = 1000;
-    var functions = new Array();
 
-    if ($('#dodanki_selected').is(':checked')) {
-        minimize_function_list.forEach(function (e) {
-            if (min > e.function.split('&theta;').length)
-                min = e.function.split('&theta;').length;
-
-            functions.push(
-                {
-                    'count': e.function.split('&theta;').length,
-                    'function': e.function,
-                    'code': e.code
-                }
-            )
-        });
-    }
-
-    functions.forEach(function (e) {
-        if (e.count == min) {
-           $('#log').append('<p>P(' + e.code + ') F = ' + e.function + ' L(P(' + e.code + ') F) = ' + e.count + '</p>');
-        }
-    });
 }
 
 
