@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95b5564d-e743-4208-9267-e2013761b2a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
+    <list default="true" id="95b5564d-e743-4208-9267-e2013761b2a8" name="Default" comment="Працює мінімізація по кількості доданків">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <list id="67ecd0b0-9b86-45e8-98bc-42d2c2c013e1" name="Rejected commit: Default" comment="Працює мінімізація по кількості доданків">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
     </list>
     <ignored path="Diskrenna.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,26 +39,18 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.69908816" vertical-offset="3788" max-vertical-offset="4554">
-              <caret line="468" column="4" selection-start-line="468" selection-start-column="4" selection-end-line="468" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="854" max-vertical-offset="6345">
+              <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
               <folding>
                 <element signature="e#138#310#0" expanded="false" />
                 <element signature="n#!!block;n#draw_table#0" expanded="false" />
-                <element signature="n#!!block;n#draw_header_of_table#0" expanded="false" />
-                <element signature="n#!!block;n#draw_body_of_table#0" expanded="false" />
-                <element signature="n#!!block;n#only#0" expanded="false" />
                 <element signature="n#!!block;n#change_button_f#0" expanded="false" />
-                <element signature="n#!!block;n#dovuznachenna_funkcii#0" expanded="false" />
                 <element signature="e#4269#4619#0" expanded="false" />
                 <element signature="e#4848#6087#0" expanded="false" />
-                <element signature="e#6263#6979#0" expanded="false" />
-                <element signature="e#7522#8238#0" expanded="false" />
                 <element signature="e#8462#8593#0" expanded="false" />
                 <element signature="e#14376#14529#0" expanded="false" />
-                <element signature="e#14535#14697#0" expanded="false" />
                 <element signature="e#14640#14689#0" expanded="false" />
-                <element signature="n#!!block;n#count_of_f#0" expanded="false" />
-                <element signature="e#14999#15050#0" expanded="false" />
+                <element signature="e#15715#15766#0" expanded="false" />
                 <element signature="n#!!block;n#GenerateDN#0" expanded="false" />
               </folding>
             </state>
@@ -83,9 +77,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-2" />
-    <option name="y" value="-27" />
+    <option name="y" value="25" />
     <option name="width" value="1370" />
-    <option name="height" value="797" />
+    <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -110,6 +104,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -144,7 +139,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -154,6 +148,9 @@
     <property name="FullScreen" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="options.lastSelected" value="preferences.lookFeel" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Diskrenna/index.html">
@@ -231,27 +228,53 @@
       <option name="project" value="LOCAL" />
       <updated>1433062775310</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Роблю вже і для невизначених">
+      <created>1433063207728</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1433063207728</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="-27" width="1370" height="797" extended-state="6" />
-    <editor active="true" />
+    <frame x="-2" y="25" width="1370" height="720" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6627907" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26510575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26510575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26510575" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39971346" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -301,7 +324,8 @@
     </option>
     <MESSAGE value="Я уже зробив якщо одна визначена функція" />
     <MESSAGE value="Роблю вже і для невизначених" />
-    <option name="LAST_COMMIT_MESSAGE" value="Роблю вже і для невизначених" />
+    <MESSAGE value="Працює мінімізація по кількості доданків" />
+    <option name="LAST_COMMIT_MESSAGE" value="Працює мінімізація по кількості доданків" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,26 +336,18 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4554">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#138#310#0" expanded="false" />
             <element signature="n#!!block;n#draw_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_header_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_body_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#only#0" expanded="false" />
             <element signature="n#!!block;n#change_button_f#0" expanded="false" />
-            <element signature="n#!!block;n#dovuznachenna_funkcii#0" expanded="false" />
             <element signature="e#4269#4619#0" expanded="false" />
             <element signature="e#4848#6087#0" expanded="false" />
-            <element signature="e#6263#6979#0" expanded="false" />
-            <element signature="e#7522#8238#0" expanded="false" />
             <element signature="e#8462#8593#0" expanded="false" />
             <element signature="e#14376#14529#0" expanded="false" />
-            <element signature="e#14535#14697#0" expanded="false" />
             <element signature="e#14640#14689#0" expanded="false" />
-            <element signature="n#!!block;n#count_of_f#0" expanded="false" />
-            <element signature="e#14999#15050#0" expanded="false" />
+            <element signature="e#15715#15766#0" expanded="false" />
             <element signature="n#!!block;n#GenerateDN#0" expanded="false" />
           </folding>
         </state>
@@ -344,21 +360,32 @@
           <folding>
             <element signature="e#138#310#0" expanded="false" />
             <element signature="n#!!block;n#draw_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_header_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_body_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#only#0" expanded="false" />
             <element signature="n#!!block;n#change_button_f#0" expanded="false" />
-            <element signature="n#!!block;n#dovuznachenna_funkcii#0" expanded="false" />
             <element signature="e#4269#4619#0" expanded="false" />
             <element signature="e#4848#6087#0" expanded="false" />
-            <element signature="e#6263#6979#0" expanded="false" />
-            <element signature="e#7522#8238#0" expanded="false" />
             <element signature="e#8462#8593#0" expanded="false" />
             <element signature="e#14376#14529#0" expanded="false" />
-            <element signature="e#14535#14697#0" expanded="false" />
             <element signature="e#14640#14689#0" expanded="false" />
-            <element signature="n#!!block;n#count_of_f#0" expanded="false" />
-            <element signature="e#14999#15050#0" expanded="false" />
+            <element signature="e#15715#15766#0" expanded="false" />
+            <element signature="n#!!block;n#GenerateDN#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#138#310#0" expanded="false" />
+            <element signature="n#!!block;n#draw_table#0" expanded="false" />
+            <element signature="n#!!block;n#change_button_f#0" expanded="false" />
+            <element signature="e#4269#4619#0" expanded="false" />
+            <element signature="e#4848#6087#0" expanded="false" />
+            <element signature="e#8462#8593#0" expanded="false" />
+            <element signature="e#14376#14529#0" expanded="false" />
+            <element signature="e#14640#14689#0" expanded="false" />
+            <element signature="e#15715#15766#0" expanded="false" />
             <element signature="n#!!block;n#GenerateDN#0" expanded="false" />
           </folding>
         </state>
@@ -378,21 +405,13 @@
           <folding>
             <element signature="e#138#310#0" expanded="false" />
             <element signature="n#!!block;n#draw_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_header_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_body_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#only#0" expanded="false" />
             <element signature="n#!!block;n#change_button_f#0" expanded="false" />
-            <element signature="n#!!block;n#dovuznachenna_funkcii#0" expanded="false" />
             <element signature="e#4269#4619#0" expanded="false" />
             <element signature="e#4848#6087#0" expanded="false" />
-            <element signature="e#6263#6979#0" expanded="false" />
-            <element signature="e#7522#8238#0" expanded="false" />
             <element signature="e#8462#8593#0" expanded="false" />
             <element signature="e#14376#14529#0" expanded="false" />
-            <element signature="e#14535#14697#0" expanded="false" />
             <element signature="e#14640#14689#0" expanded="false" />
-            <element signature="n#!!block;n#count_of_f#0" expanded="false" />
-            <element signature="e#14999#15050#0" expanded="false" />
+            <element signature="e#15715#15766#0" expanded="false" />
             <element signature="n#!!block;n#GenerateDN#0" expanded="false" />
           </folding>
         </state>
@@ -412,21 +431,13 @@
           <folding>
             <element signature="e#138#310#0" expanded="false" />
             <element signature="n#!!block;n#draw_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_header_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_body_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#only#0" expanded="false" />
             <element signature="n#!!block;n#change_button_f#0" expanded="false" />
-            <element signature="n#!!block;n#dovuznachenna_funkcii#0" expanded="false" />
             <element signature="e#4269#4619#0" expanded="false" />
             <element signature="e#4848#6087#0" expanded="false" />
-            <element signature="e#6263#6979#0" expanded="false" />
-            <element signature="e#7522#8238#0" expanded="false" />
             <element signature="e#8462#8593#0" expanded="false" />
             <element signature="e#14376#14529#0" expanded="false" />
-            <element signature="e#14535#14697#0" expanded="false" />
             <element signature="e#14640#14689#0" expanded="false" />
-            <element signature="n#!!block;n#count_of_f#0" expanded="false" />
-            <element signature="e#14999#15050#0" expanded="false" />
+            <element signature="e#15715#15766#0" expanded="false" />
             <element signature="n#!!block;n#GenerateDN#0" expanded="false" />
           </folding>
         </state>
@@ -441,26 +452,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69908816" vertical-offset="3788" max-vertical-offset="4554">
-          <caret line="468" column="4" selection-start-line="468" selection-start-column="4" selection-end-line="468" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="854" max-vertical-offset="6345">
+          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
           <folding>
             <element signature="e#138#310#0" expanded="false" />
             <element signature="n#!!block;n#draw_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_header_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#draw_body_of_table#0" expanded="false" />
-            <element signature="n#!!block;n#only#0" expanded="false" />
             <element signature="n#!!block;n#change_button_f#0" expanded="false" />
-            <element signature="n#!!block;n#dovuznachenna_funkcii#0" expanded="false" />
             <element signature="e#4269#4619#0" expanded="false" />
             <element signature="e#4848#6087#0" expanded="false" />
-            <element signature="e#6263#6979#0" expanded="false" />
-            <element signature="e#7522#8238#0" expanded="false" />
             <element signature="e#8462#8593#0" expanded="false" />
             <element signature="e#14376#14529#0" expanded="false" />
-            <element signature="e#14535#14697#0" expanded="false" />
             <element signature="e#14640#14689#0" expanded="false" />
-            <element signature="n#!!block;n#count_of_f#0" expanded="false" />
-            <element signature="e#14999#15050#0" expanded="false" />
+            <element signature="e#15715#15766#0" expanded="false" />
             <element signature="n#!!block;n#GenerateDN#0" expanded="false" />
           </folding>
         </state>
