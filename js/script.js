@@ -160,8 +160,7 @@ function minimization() {
 
 
     function minimize(our_function) {
-        $('#log').append('<p>Довизначена функція : ' + our_function + '</p>');
-        minimize_function_list = new Array();
+        var func = our_function;
         // Будую таблицю
         table = new Array();
         for (var i = 1; i < rows; i++) {
@@ -259,7 +258,8 @@ function minimization() {
             {
                 'position': 'l',
                 'function': minimize_function,
-                'code': list_l.code
+                'code': list_l.code,
+                'doviznachena' : func
             }
         );
 
@@ -292,7 +292,8 @@ function minimization() {
             {
                 'position': 'r',
                 'function': minimize_function,
-                'code': list_r.code
+                'code': list_r.code,
+                'doviznachena' : func
             }
         );
 
@@ -411,7 +412,8 @@ function minimization() {
                 {
                     'position': 'l',
                     'function': minimize_function,
-                    'code': list_l.code
+                    'code': list_l.code,
+                    'doviznachena' : func
                 }
             );
 
@@ -444,125 +446,12 @@ function minimization() {
                 {
                     'position': 'r',
                     'function': minimize_function,
-                    'code': list_r.code
+                    'code': list_r.code,
+                    'doviznachena' : func
                 }
             );
         }
 
-
-        var min = 1000;
-        var functions = new Array();
-        var count;
-
-        if ($('#dodanki_selected').is(':checked')) {
-            minimize_function_list.forEach(function (e) {
-                if (min > e.function.split('&theta;').length)
-                    min = e.function.split('&theta;').length;
-
-                functions.push(
-                    {
-                        'count': e.function.split('&theta;').length,
-                        'function': e.function,
-                        'code': e.code
-                    }
-                );
-            });
-
-        }
-
-        if ($('#naymensha_kilkist_vhodgen').is(':checked')) {
-            minimize_function_list.forEach(function (e) {
-                if (min > e.function.split('X').length - 1)
-                    min = e.function.split('X').length - 1;
-
-                functions.push(
-                    {
-                        'count': e.function.split('X').length - 1,
-                        'function': e.function,
-                        'code': e.code
-                    });
-            });
-
-
-        }
-
-        var list;
-        var codes;
-        if ($('#operations_selected').is(':checked')) {
-            minimize_function_list.forEach(function (e) {
-                count = 0;
-                list = e.function.split('X');
-
-                codes = new Array();
-
-                for (var i = 0; i < e.code.length; i++) {
-                    if (e.code[i] == 1)
-                        codes.push(i + 1);
-                }
-
-                for (var i = 1; i < list.length; i++) {
-                    count++;
-
-                    if (codes.indexOf(parseInt(list[i])) != -1)
-                        count++;
-                }
-
-                if (e.function[0] == '1')
-                    count++;
-
-                count--;
-
-                if (min > count)
-                    min = count;
-
-                functions.push(
-                    {
-                        'count': count,
-                        'function': e.function,
-                        'code': e.code
-                    });
-            });
-        }
-
-        functions.forEach(function (e) {
-            codes = new Array();
-
-            for (var i = 0; i < e.code.length; i++) {
-                if (e.code[i] == 1)
-                    codes.push(i + 1);
-            }
-
-            temp = '';
-            tmp = e.function.split('&theta;');
-            tmp.forEach(function (e) {
-                if (e.indexOf('X') == -1) {
-                    temp += e;
-                } else {
-                    count = 0;
-                    list = e.split('X');
-                    list.forEach(function (e) {
-                        if (count > 0)
-                            if (codes.indexOf(parseInt(e)) !== -1) {
-                                temp += '<img src = "x.png">' + e;
-                            } else {
-                                temp += 'X' + e;
-                            }
-
-                        count++;
-                    });
-                }
-
-                temp += ' &theta; ';
-            });
-
-            temp = temp.substr(0, temp.lastIndexOf('&theta;'));
-
-            e.function = temp;
-
-            if (e.count == min) {
-                $('#log').append('<p>P(' + e.code + ') F = ' + e.function + ' L(P(' + e.code + ') F) = ' + e.count + '</p>');
-            }
-        });
     }
 
     // Очищую результат якщо він уже був виведений
@@ -582,6 +471,128 @@ function minimization() {
         });
     }
 
+    var min = 1000;
+    var functions = new Array();
+    var count;
+
+    if ($('#dodanki_selected').is(':checked')) {
+        minimize_function_list.forEach(function (e) {
+            if (min > e.function.split('&theta;').length)
+                min = e.function.split('&theta;').length;
+
+            functions.push(
+                {
+                    'count': e.function.split('&theta;').length,
+                    'function': e.function,
+                    'code': e.code,
+                    'func': e.doviznachena
+                }
+            );
+        });
+
+    }
+
+    if ($('#naymensha_kilkist_vhodgen').is(':checked')) {
+        minimize_function_list.forEach(function (e) {
+            if (min > e.function.split('X').length - 1)
+                min = e.function.split('X').length - 1;
+
+            functions.push(
+                {
+                    'count': e.function.split('X').length - 1,
+                    'function': e.function,
+                    'code': e.code,
+                    'func': e.doviznachena
+                });
+        });
+
+
+    }
+
+    var list;
+    var codes;
+    if ($('#operations_selected').is(':checked')) {
+        minimize_function_list.forEach(function (e) {
+            count = 0;
+            list = e.function.split('X');
+
+            codes = new Array();
+
+            for (var i = 0; i < e.code.length; i++) {
+                if (e.code[i] == 1)
+                    codes.push(i + 1);
+            }
+
+            for (var i = 1; i < list.length; i++) {
+                count++;
+
+                if (codes.indexOf(parseInt(list[i])) != -1)
+                    count++;
+            }
+
+            if (e.function[0] == '1')
+                count++;
+
+            count--;
+
+            if (min > count)
+                min = count;
+
+            functions.push(
+                {
+                    'count': count,
+                    'function': e.function,
+                    'code': e.code,
+                    'func': e.doviznachena
+                });
+        });
+    }
+
+    var doviznacheni = new Array();
+    functions.forEach(function (e) {
+        codes = new Array();
+
+        for (var i = 0; i < e.code.length; i++) {
+            if (e.code[i] == 1)
+                codes.push(i + 1);
+        }
+
+        temp = '';
+        tmp = e.function.split('&theta;');
+        tmp.forEach(function (e) {
+            if (e.indexOf('X') == -1) {
+                temp += e;
+            } else {
+                count = 0;
+                list = e.split('X');
+                list.forEach(function (e) {
+                    if (count > 0)
+                        if (codes.indexOf(parseInt(e)) !== -1) {
+                            temp += '<img src = "x.png">' + e;
+                        } else {
+                            temp += 'X' + e;
+                        }
+
+                    count++;
+                });
+            }
+
+            temp += ' &theta; ';
+        });
+
+        temp = temp.substr(0, temp.lastIndexOf('&theta;'));
+
+        e.function = temp;
+
+        if (doviznacheni.indexOf(e.func) == -1 && e.count == min) {
+            doviznacheni.push(e.func);
+            $('#log').append('<p>Довизначена функція :' + e.func + '</p>');
+        }
+
+        if (e.count == min) {
+            $('#log').append('<p> P(' + e.code + ') F = ' + e.function + ' L(P(' + e.code + ') F) = ' + e.count + '</p>');
+        }
+    });
 }
 
 
