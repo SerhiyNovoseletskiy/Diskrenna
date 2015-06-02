@@ -577,10 +577,10 @@ function minimization() {
                 });
             }
 
-            temp += ' &theta; ';
+            temp += ' <img src = "plus.png"> ';
         });
 
-        temp = temp.substr(0, temp.lastIndexOf('&theta;'));
+        temp = temp.substr(0, temp.lastIndexOf('<img src = "plus.png">'));
 
         e.function = temp;
 
