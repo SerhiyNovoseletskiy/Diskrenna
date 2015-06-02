@@ -160,7 +160,7 @@ function minimization() {
 
 
     function minimize(our_function) {
-        $('#log').append('<p>Функція : ' + our_function + '</p>');
+        $('#log').append('<p>Довизначена функція : ' + our_function + '</p>');
         minimize_function_list = new Array();
         // Будую таблицю
         table = new Array();
@@ -449,8 +449,10 @@ function minimization() {
             );
         }
 
+
         var min = 1000;
         var functions = new Array();
+        var count;
 
         if ($('#dodanki_selected').is(':checked')) {
             minimize_function_list.forEach(function (e) {
@@ -463,15 +465,71 @@ function minimization() {
                         'function': e.function,
                         'code': e.code
                     }
-                )
+                );
             });
 
-            functions.forEach(function (e) {
-                if (e.count == min) {
-                    $('#log').append('<p>P(' + e.code + ') F = ' + e.function + ' L(P(' + e.code + ') F) = ' + e.count + '</p>');
+        }
+
+        if ($('#naymensha_kilkist_vhodgen').is(':checked')) {
+            minimize_function_list.forEach(function (e) {
+                if (min > e.function.split('X').length - 1)
+                    min = e.function.split('X').length - 1;
+
+                functions.push(
+                    {
+                        'count': e.function.split('X').length - 1,
+                        'function': e.function,
+                        'code': e.code
+                    });
+            });
+
+
+        }
+
+        var list;
+        var codes;
+        if ($('#operations_selected').is(':checked')) {
+            minimize_function_list.forEach(function (e) {
+                count = 0;
+                list = e.function.split('X');
+
+                codes = new Array();
+
+                for (var i = 0; i < e.code.length; i++) {
+                    if (e.code[i] == 1)
+                        codes.push(i+1);
                 }
+
+                for (var i = 1; i < list.length; i++) {
+                    count++;
+
+                    if (codes.indexOf(parseInt(list[i])) != -1)
+                        count++;
+                }
+
+                if (e.function[0] == '1')
+                    count++;
+
+                count--;
+                count--;
+
+                if (min > count)
+                    min = count;
+
+                functions.push(
+                    {
+                        'count': count,
+                        'function': e.function,
+                        'code': e.code
+                    });
             });
         }
+
+        functions.forEach(function (e) {
+            if (e.count == min) {
+                $('#log').append('<p>P(' + e.code + ') F = ' + e.function + ' L(P(' + e.code + ') F) = ' + e.count + '</p>');
+            }
+        });
     }
 
     // Очищую результат якщо він уже був виведений
@@ -490,7 +548,6 @@ function minimization() {
             minimize($(this).html());
         });
     }
-
 
 }
 
